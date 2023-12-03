@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <h1>Hello World</h1>
@@ -19,7 +30,12 @@
         <span v-else>Show</span>
       </button>
 
-      <div v-show="showBooks">Currently Showing Books</div>
+      <br />
+
+      <div class="box" @mouseover="handle_event">mouseover</div>
+      <div class="box">mouseleave</div>
+      <div class="box">double click</div>
+      <div class="box"></div>
     </div>
 
     <script src="index.js"></script>
