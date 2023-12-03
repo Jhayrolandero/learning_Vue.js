@@ -1,8 +1,6 @@
 const app = Vue.createApp({
   // Data, functions
 
-  //   template: "<p>Hi!</p>",
-
   data() {
     return {
       url: "facebook.com",
@@ -43,6 +41,22 @@ const app = Vue.createApp({
     handle_mouse_move(e) {
       this.x = e.offsetX;
       this.y = e.offsetY;
+    },
+
+    // Toggle Fav
+    toggle_fav() {
+      for (let i = 0; i < this.books.length; i++) {
+        for (book in this.books[i]) {
+          if (book === "ifFav") {
+            this.books[i][book] = !this.books[i][book];
+          }
+        }
+      }
+    },
+  },
+  computed: {
+    filter_books() {
+      return this.books.filter((book) => book.ifFav);
     },
   },
 });

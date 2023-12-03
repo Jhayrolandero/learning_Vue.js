@@ -15,8 +15,20 @@
         display: inline-block;
       }
 
+      li {
+        list-style: none;
+        border: black solid 1px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
+        margin-bottom: 1em;
+      }
+
       .fav {
         background-color: tomato;
+        color: #fff;
       }
     </style>
   </head>
@@ -26,7 +38,7 @@
     <div id="app">
       <div v-if="showBooks">
         <ul>
-          <li v-for="book in books" :class=" { fav: book.ifFav } ">
+          <li v-for="book in filter_books" :class=" { fav: book.ifFav } ">
             <img :src="book.img" :alt="book.title" />
             <h4>{{ book.title }}</h4>
             <p>{{ book.author }}</p>
@@ -34,7 +46,7 @@
         </ul>
       </div>
 
-      <a :href="url">Facebook</a>
+      <button @click="toggle_fav">Toggle</button>
     </div>
 
     <script src="index.js"></script>
