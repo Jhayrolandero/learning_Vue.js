@@ -1,0 +1,8 @@
+{
+    "jobs": [
+        { "title": "Toplaner", "id": 1, "details": "lorem" },
+        { "title": "Midlaner", "id": 2, "details": "lorem" },
+        { "title": "Botlaner", "id": 1, "details": "lorem" }
+    ]
+
+}
