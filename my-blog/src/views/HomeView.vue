@@ -1,39 +1,31 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <input type="text" v-model="search">
-    <p>Search Term: {{ search }}</p>
-    <div v-for="name in matchNames" :key="name"> {{ name }} </div>
+    <div v-if="error">{{ error }}</div>
+    <div v-if="posts.length">
+      <PostList :posts="posts" />
+    </div>
+    <div v-else>
+      Loading...
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, computed, watch, watchEffect } from 'vue'
+import PostList from '../components/PostList.vue'
+import getPosts from '../composables/getPosts'
 
 export default {
   name: 'HomeView',
+  components: { PostList },
 
   setup() {
 
-    const search = ref('')
-    const names = ref(["Mordekaiser", "Garen",
-      "Aatrox", "Volibear", "Malphite", "Tamn Kench"])
+    const { posts, error, load } = getPosts()
 
-    watch(search, () => {
-      console.log("run wa")
-    })
+    load()
 
-    watchEffect(() => {
-      console.log("run")
-    })
-    const matchNames = computed(() => {
-      return names.value.filter(
-        (name) => name.includes(search.value))
-    })
-
-    return {
-      search, matchNames
-    }
+    return { posts, error }
   }
 }
 </script>
